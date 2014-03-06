@@ -24,7 +24,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
  */
 class SecurityFOSUser1Controller extends SecurityController
 {
-    public function loginAction()
+    public function loginAction(\Symfony\Component\HttpFoundation\Request $request)
     {
         $user = $this->container->get('security.context')->getToken()->getUser();
 
@@ -35,6 +35,6 @@ class SecurityFOSUser1Controller extends SecurityController
             return new RedirectResponse($url);
         }
 
-        return parent::loginAction();
+        return parent::loginAction($request);
     }
 }
